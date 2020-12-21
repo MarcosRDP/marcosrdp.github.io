@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script>
+            var saida = "index.html";
+            var background_color = 0; //0 = fundo preto; 1 = fundo branco
+            var botão_revelado = 1; //0 = desaparecido; 1 = aparecendo
+
+            function sair() {
+                window.location.href = saida;
+            }
+
+            function alterar_saida() {
+                if(saida == "index.html"){
+                    saida = "cadastro.html";
+                }
+                else{
+                    saida = "index.html";
+                }
+            }
+
+            function background(){
+                if(background_color == 0){
+                    document.getElementById("fundo").style.backgroundColor = 'white';
+                    background_color = 1;
+                }
+                else{
+                    document.getElementById("fundo").style.backgroundColor = 'black';
+                    background_color = 0;
+                }
+            }
+
+            function revelar_esconder_botao(){
+                if(botão_revelado == 0){
+                    document.getElementById("alterar").disabled = false;
+                    document.getElementById("sair").disabled = false;
+                    document.getElementById('alterar').style.display = 'inline';
+                    document.getElementById('sair').style.display = 'inline';
+                    botão_revelado = 1;
+                }
+                else{
+                    document.getElementById("alterar").disabled = true;
+                    document.getElementById("sair").disabled = true;
+                    document.getElementById('alterar').style.display = 'none';
+                    document.getElementById('sair').style.display = 'none';
+                    
+                    botão_revelado = 0;
+                }
+            }
+        </script>
+        <style>
+            .centralizar{
+                text-align: center;
+            }
+            .direita{
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body id="fundo" style="background-color: black">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cadastro.html">Cadastro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="layout.html">Layout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Perfil</a>
+            </li>
+          </ul>
+          <br>
+          <div class="centralizar">
+            <button type="button" class="btn btn-primary btn-lg" onclick="background()">Fundo</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="revelar_esconder_botao()">Esconder</button>
+            <button id="alterar" type="button" class="btn btn-primary btn-lg" onclick="alterar_saida()">Alterar</button>
+            <button id="sair" type="button" class="btn btn-primary btn-lg" onclick="sair()">Sair</button>
+        </div>
+    </body>
+</html>
